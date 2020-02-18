@@ -30,7 +30,7 @@ public class CAI1 {
 	}
 
 	private static void askQuestion() {
-		System.out.println("How much is " + randNum1CAI1 + " times " + randNum2CAI1 + "?");
+		System.out.println("How much is " + randNum1CAI1 + " * " + randNum2CAI1 + "?");
 	}
 
 	private static void readResponse() {

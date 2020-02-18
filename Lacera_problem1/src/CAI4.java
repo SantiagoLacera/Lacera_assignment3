@@ -2,12 +2,13 @@ import java.security.SecureRandom;
 import java.util.Random;
 import java.util.Scanner;
 
-public class CAI3 {
+public class CAI4 {
 	static int randResponseNum;
-  	static int randNum1CAI3;
-  	static int randNum2CAI3;
-  	static int totalNumSystemCAI2;
-	static int totalNumUserCAI2;
+  	static int randNum1CAI4;
+  	static int randNum2CAI4;
+  	static int totalNumSystemCAI4;
+	static int totalNumUserCAI4;
+	static int difficultyLevelNum;
 	static double scoreUserPercentage;
 	static int goodAnsNum = 0;
 	static int count = 0;
@@ -19,9 +20,9 @@ public class CAI3 {
 	// Main method
 	public static void main(String args[]) {
 		SecureRandom randomNum = new SecureRandom();
-		randNum1CAI3 = randomNum.nextInt(10);
-		randNum2CAI3 = randomNum.nextInt(10);
-		totalNumSystemCAI2 = randNum1CAI3 * randNum2CAI3;
+		randNum1CAI4 = randomNum.nextInt(10);
+		randNum2CAI4 = randomNum.nextInt(10);
+		totalNumSystemCAI4 = randNum1CAI4 * randNum2CAI4;
 		Random randomResponsesNum = new Random();
 		randResponseNum = randomResponsesNum.nextInt(3);
 		randResponseNum += 1;
@@ -33,6 +34,8 @@ public class CAI3 {
 
 	static public void quiz() {
 		
+		
+		userDifficultyLevel();
 		do {
 			count++;
 			newSystemNumbers();
@@ -45,19 +48,31 @@ public class CAI3 {
 		questionUserContinue();
 	}
 
+	private static void userDifficultyLevel() {
+            
+		System.out.println("Select the Type of difficulty between:");
+		System.out.println("1. Easy");
+		System.out.println("2. Medium");
+		System.out.println("3. Hard");
+		System.out.println("4. Extra hard");
+		difficultyLevelNum = in.nextInt();
+
+		
+	}
+
 	private static void askQuestion() {
-		System.out.println(count + ". How much is " + randNum1CAI3 + " * " + randNum2CAI3 + "?");
+		System.out.println(count + ". How much is " + randNum1CAI4 + " * " + randNum2CAI4 + "?");
 	}
 
 	private static void readResponse() {
 		
-		totalNumUserCAI2 = in.nextInt();
+		totalNumUserCAI4 = in.nextInt();
 		
 	}
 
 	private static void isAsnwerCorrect() {
 		
-		if (totalNumUserCAI2 == totalNumSystemCAI2) {
+		if (totalNumUserCAI4 == totalNumSystemCAI4) {
 			displayCorrectResponse2();
 		} else {
 			displayInorrectResponse2();
@@ -79,9 +94,27 @@ public class CAI3 {
 	private static void newSystemNumbers() {
 		// create instance of Random class
 		SecureRandom randomNum = new SecureRandom();
-		randNum1CAI3 = randomNum.nextInt(10);
-		randNum2CAI3 = randomNum.nextInt(10);
-		totalNumSystemCAI2 = randNum1CAI3 * randNum2CAI3;
+		
+		 switch(difficultyLevelNum) {
+ 		  case 1:
+ 			randNum1CAI4 = randomNum.nextInt(10);
+ 			randNum2CAI4 = randomNum.nextInt(10);
+ 			break;
+ 		  case 2:
+ 			randNum1CAI4 = randomNum.nextInt(100);
+  			randNum2CAI4 = randomNum.nextInt(100);
+ 			break;
+ 		  case 3:
+ 			 randNum1CAI4 = randomNum.nextInt(1000);
+  			randNum2CAI4 = randomNum.nextInt(1000);
+ 			break;
+ 		  case 4:
+ 			 randNum1CAI4 = randomNum.nextInt(10000);
+  			randNum2CAI4 = randomNum.nextInt(10000);
+ 			break;
+ 		  }
+		
+		totalNumSystemCAI4 = randNum1CAI4 * randNum2CAI4;
 	}
 	private static void newRandomNum() {
 		// create instance of Random class
@@ -153,8 +186,5 @@ public class CAI3 {
   			questionUserContinue();
   		}
   		
-
   	  }
-  	  
-
 }
