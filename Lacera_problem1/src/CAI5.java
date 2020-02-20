@@ -13,9 +13,10 @@ public class CAI5 {
 	static int difficultyLevelNum;
 	static int problemTypeNum;
 	static double scoreUserPercentage;
-	static int goodAnsNum = 0;
+	static double goodAnsNum = 0.0;
 	static int count = 0;
 	static boolean divideStatment = false;
+	static boolean case5 = false;
 	
 	static Scanner in = new Scanner(System.in);
 
@@ -68,10 +69,9 @@ public class CAI5 {
 		case 4:
 			totalNumSystemCAIDivide4 = ((double)randNum1CAI4 / (double)randNum2CAI4);
 			divideStatment = true;
-		//	System.out.println(totalNumSystemCAIDivide4);
 			break;
 			}
-		
+				
 	}
 
 	private static void userDifficultyLevel() {
@@ -100,6 +100,12 @@ public class CAI5 {
 
 	private static void askQuestion() {
 		Random randomQuestionNum = new Random();
+		
+		if(problemTypeNum == 5 || case5 == true) {
+		    case5 = true;
+ 			problemTypeNum = randomQuestionNum.nextInt(4);
+			problemTypeNum += 1;
+		}
 		switch (problemTypeNum) {
 		case 1:
 			System.out.println(count + ". How much is " + randNum1CAI4 + " + " + randNum2CAI4 + "?");
@@ -113,10 +119,6 @@ public class CAI5 {
 		case 4:
 			System.out.println(count + ". How much is " + randNum1CAI4 + " / " + randNum2CAI4 + "?");
 			break;
-		case 5:
-			problemTypeNum = randomQuestionNum.nextInt(3);
-			problemTypeNum += 1;
-			askQuestion();
 		}
 	}
 
@@ -125,8 +127,6 @@ public class CAI5 {
 		
 		if(problemTypeNum == 4) {
 			totalNumUserCAIDivide4 = in.nextDouble();
-			System.out.println(totalNumUserCAIDivide4);
-			System.out.println(totalNumSystemCAIDivide4);
 		} else {
 			totalNumUserCAI4 = in.nextInt();
 		}
@@ -158,10 +158,10 @@ public class CAI5 {
 	private static void displayCompletionMessage() {
 		scoreUserCalculation();
   		if(scoreUserPercentage >= 75) {
-  			System.out.println("Congratulations, you are ready to go to the next level!");
+  			System.out.println("Your score was " + scoreUserPercentage + "% Congratulations, you are ready to go to the next level!");
   			questionUserContinue(); 
   		}else {
-  			System.out.println("Please ask your teacher for extra help.");
+  			System.out.println("Your score was " + scoreUserPercentage + "% Please ask your teacher for extra help.");
   			questionUserContinue();
   		}
   		  
@@ -200,12 +200,13 @@ public class CAI5 {
   	  
 
   	  private static void displayCorrectResponse2() {
+  		goodAnsNum++;
   		  switch(randResponseNum) {
   		  case 1:
   			System.out.println("Very good!\n");
   			break;
   		  case 2:
-  			System.out.println("You Rock\n");
+  			System.out.println("You Rock\n");		
   			break;
   		  case 3:
   			System.out.println("GG\n");
@@ -214,8 +215,6 @@ public class CAI5 {
   			System.out.println("Perfect score!\n");
   			break;
   		  }
-  	    goodAnsNum++;
-
   	  }
 
   	  private static void displayInorrectResponse2() {
@@ -239,7 +238,7 @@ public class CAI5 {
   	  
   	  private static void scoreUserCalculation() {
   		  
-  		scoreUserPercentage = (goodAnsNum / 10) * 100;
+  		scoreUserPercentage = (goodAnsNum / 10.0) * 100.00;
   		  
   	  }
   	  
@@ -250,6 +249,7 @@ public class CAI5 {
   		System.out.println("2. To Exit");
   		userChoice = in.nextInt();
   		if(userChoice == 1) {
+  			goodAnsNum = 0;
   			count = 0;
   			quiz();
   		}else if(userChoice == 2){

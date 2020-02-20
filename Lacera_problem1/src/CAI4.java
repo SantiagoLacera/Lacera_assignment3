@@ -10,7 +10,7 @@ public class CAI4 {
 	static int totalNumUserCAI4;
 	static int difficultyLevelNum;
 	static double scoreUserPercentage;
-	static int goodAnsNum = 0;
+	static double goodAnsNum = 0.0;
 	static int count = 0;
 	
 	static Scanner in = new Scanner(System.in);
@@ -83,10 +83,10 @@ public class CAI4 {
 	private static void displayCompletionMessage() {
 		scoreUserCalculation();
   		if(scoreUserPercentage >= 75) {
-  			System.out.println("Congratulations, you are ready to go to the next level!");
+  			System.out.println("Your score was " + scoreUserPercentage + "% Congratulations, you are ready to go to the next level!");
   			questionUserContinue(); 
   		}else {
-  			System.out.println("Please ask your teacher for extra help.");
+  			System.out.println("Your score was " + scoreUserPercentage + "% Please ask your teacher for extra help.");
   			questionUserContinue();
   		}
   		  
@@ -165,7 +165,7 @@ public class CAI4 {
   	  
   	  private static void scoreUserCalculation() {
   		  
-  		scoreUserPercentage = (goodAnsNum / 10) * 100;
+  		scoreUserPercentage = (goodAnsNum / 10.0) * 100.00;
   		  
   	  }
   	  
