@@ -135,7 +135,7 @@ public class CAI5 {
 
 	private static void isAsnwerCorrect() {
 		if (divideStatment == true) {
-			if (totalNumSystemCAIDivide4 == totalNumUserCAIDivide4) {
+			if (Math.abs(totalNumSystemCAIDivide4 - totalNumUserCAIDivide4) < 0.3) {
 				displayCorrectResponse2();
 			} else {
 				displayInorrectResponse2();
@@ -262,5 +262,3 @@ public class CAI5 {
   		
   	  }
 }
-
-
